@@ -48,6 +48,7 @@ class Schedule(Base):
     execute_at = Column(Time)
     duration = Column(Integer, default=30) # Time in seconds
     state = Column(Boolean,default=True)
+    
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
     created_at = Column(DateTime, default=datetime.now)
     device = relationship("Client_Device", back_populates="schedules")
@@ -57,16 +58,16 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# device_1 = Client_Device(name="Dinning Hall Bell", state=True)
-# device_2 = Client_Device(name="Tution Block Bell", state=True)
-# device_3 = Client_Device(name="Dormitory Area Bell", state=True)
+device_1 = Client_Device(name="Dinning Hall Bell", state=True)
+device_2 = Client_Device(name="Tution Block Bell", state=True)
+device_3 = Client_Device(name="Dormitory Area Bell", state=True)
 
-# session.add_all([device_1, device_2, device_3])
+session.add_all([device_1, device_2, device_3])
 
 # device = session.query(Client_Device).filter_by(id="5Ib7g").first()
 # schedule = Schedule(name="Wake Up Time", execute_at=time(12, 30), duration=10, state=True, device=device)
 # session.add(schedule)
-# session.commit()
+session.commit()
 
 # device = session.query(Client_Device).filter_by(id="5Ib7g").first()
 # print(device.schedules)

@@ -9,14 +9,10 @@ app = Flask(__name__)
 CORS(app)
 app.config["session_tokens"] = []
 
-session_token = {
-    "user_id": "",
-    "token": "",
-    "created_at": ""
-}
 
 @app.route("/")
 def Home():
+    # return page to download apk
     return "Home"
 
 @app.route("/user/<string:args>", methods=["POST", "GET"])
@@ -103,7 +99,6 @@ def Devices(args=None):
     if method == 'POST':
         device_id = request.get_json()["device_id"]
         device = session.query(Client_Device).filter_by(id=device_id).first()
-
         if args == "update":
             device_name = request.get_json()["device_name"]
             device.name = device_name
@@ -180,6 +175,8 @@ def Schedules(args=None, device_id=None, schedule_id=None):
 
         if args == "toggle":
             schedule.state = not schedule.state
+            session.commit()
+            return jsonify({"state": schedule.state})
 
         if args == "delete":
             session.delete(schedule)
