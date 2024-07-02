@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
-# from flask_cors import CORS
+from flask_cors import CORS
 from db_model import User, Schedule, Client_Device, session, generate_random_code
 from passlib.hash import sha256_crypt
 from datetime import datetime, time
 from generals import ExtractTime
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 app.config["session_tokens"] = []
 
 session_token = {
