@@ -190,5 +190,5 @@ def Schedules(args=None, device_id=None, schedule_id=None):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=443, host="192.168.100.3")
+    app.run(debug=True, port=443, host="0.0.0.0")
     # app.run(debug=True, port=443)
