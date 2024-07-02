@@ -5,9 +5,9 @@ from datetime import datetime, time
 import random
 import string
 
-DB_USERNAME = 'exchecke_app'
-DB_PASSWORD = '{Um?8wQ15W}U'
-DB_DATABASE = 'test'
+DB_USERNAME = 'andrew'
+DB_PASSWORD = '1234567890'
+DB_DATABASE = 'link_hub'
 
 engine = create_engine(f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@localhost/{DB_DATABASE}", echo=True)
 Base = declarative_base()
